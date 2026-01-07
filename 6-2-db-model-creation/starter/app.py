@@ -10,6 +10,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+class User(db.model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), nulltable=False, unique=True)
+    emal = db.Column(db.String(150), nulltable=False, unique=True)
+
+def __repr__(self):
+    return f'<User(self.username)>'  #not sure why its () not {}
+
 @app.route('/form', methods=['GET', 'POST'])
 def form():
     form = MyForm()
